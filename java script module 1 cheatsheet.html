@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Development Cheatsheet</title>
+    <style>
+        @media print {
+            body { margin: 0.5in; }
+            table { page-break-inside: avoid; }
+            tr { page-break-inside: avoid; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e9ecef;
+        }
+        
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+        
+        .term {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.05em;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #2980b9;
+        }
+        
+        @media print {
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print to PDF</button>
+    
+    <h1>JavaScript Development Cheatsheet</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%">Tag/Terminology</th>
+                <th style="width: 35%">Description</th>
+                <th style="width: 45%">Code Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="term">&lt;script&gt;</td>
+                <td>Used to include the required JavaScript code in your HTML document.</td>
+                <td><pre>&lt;body&gt;
+    &lt;p id="showname"&gt;&lt;/p&gt;
+    &lt;script&gt;
+        document.getElementById('showname')
+        .innerHTML='Peter';
+    &lt;/script&gt;
+&lt;/body&gt;</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">&lt;script src&gt;</td>
+                <td>Used to link the required JavaScript files in your HTML document.</td>
+                <td><pre>&lt;script src="script.js"&gt;&lt;/script&gt;</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">var</td>
+                <td>var is a keyword used to declare variables.</td>
+                <td><pre>var num1=10;
+var num2=11;</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">var & Scope</td>
+                <td>var has functional scope, allowing variable to be accessed within function only.</td>
+                <td><pre>function show() {
+    var name = 'Peter';
+    document.getElementById('showname')
+    .innerHTML = name;
+}</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">let</td>
+                <td>let is a keyword used to declare variables.</td>
+                <td><pre>let num1=20;
+let num2=21;</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">let & Scope</td>
+                <td>let has block scope, allowing the variable to be limited to the block, statement, or expression in which it is defined, preventing redeclaration within the same scope.</td>
+                <td><pre>{
+    let emailId = 'test@example.com';
+    document.getElementById('showemail')
+    .innerHTML = emailId;
+}</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">const</td>
+                <td>const is a keyword used to declare variables.</td>
+                <td><pre>const employeeId=120;
+const employeeId=121;</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">const & Scope</td>
+                <td>It creates a constant whose value cannot be reassigned or redeclared.</td>
+                <td><pre>{
+    const employeeId = 120;
+    document.getElementById('showeEId')
+    .innerHTML = employeeId;
+}</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Arithmetic Operators</td>
+                <td>Arithmetic operators perform mathematical calculations like addition, subtraction, multiplication, division and modulus.</td>
+                <td><pre>let x = 15, y = 3;
+let sum = x + y; // 18
+let difference = x - y; // 12
+let product = x * y; // 45
+let quotient = x / y; // 5
+let remainder = x % y; // 0</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Comparison Operators</td>
+                <td>Comparison operators compare values and return true/false based on the comparison.</td>
+                <td><pre>let a = 5, b = 7;
+let isEqual = a == b; // false
+let isNotEqual = a != b; // true
+let isStrictEqual = a === b; // false
+let isGreaterThan = a > b; // false</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Logical Operators</td>
+                <td>Logical operators combine multiple conditions and return a boolean result.</td>
+                <td><pre>let hasPermission = true;
+let isMember = false;
+let canAccess = hasPermission && isMember;
+let canView = hasPermission || isMember;
+let isDenied = !hasPermission;</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Assignment Operators</td>
+                <td>Assignment operators assign values to variables. For example, =, +=, -=.</td>
+                <td><pre>let x = 10;
+x += 5; // x = x + 5
+x -= 5; // x = x - 5</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Unary Operators</td>
+                <td>Unary operators act on a single operand, performing operations like negation or incrementing.</td>
+                <td><pre>let count = 5;
+count++; // count is now 6
+count--; // count is now 5 again</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">typeof Operator</td>
+                <td>typeof operator returns the data type of a variable or expression as a string.</td>
+                <td><pre>let num1 = 42;
+console.log(typeof(num1)); // Number
+let name = 'John';
+console.log(typeof(name)); // String</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">if Statement</td>
+                <td>The if statement is used to execute a piece of block code if the given condition is true.</td>
+                <td><pre>let age = 25;
+if (age >= 18) {
+    console.log("You are an adult.");
+} else {
+    console.log("You are a minor.");
+}</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">else if Statement</td>
+                <td>It allows you to test multiple conditions sequentially. If the condition is true then it will execute if statement block otherwise execute else statement block.</td>
+                <td><pre>let month = 'March to May';
+if (month == 'March to May') {
+    console.log('It is spring season');
+} else if (month == 'June to August') {
+    console.log('It is summer season');
+} else if (month == 'Sep to Nov') {
+    console.log('It is autumn season');
+} else {
+    console.log('It is winter season');
+}</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Nested if else</td>
+                <td>This statement allows you to test multiple conditions and execute different blocks of code based on the results of those conditions.</td>
+                <td><pre>const temp = 30, isRaining = true;
+if (temp > 30) {
+  if (isRaining) {
+    console.log("Hot and raining.");
+  } else {
+    console.log("Hot, not raining.");
+  }
+} else {
+  if (isRaining) {
+    console.log("Not hot, raining.");
+  } else {
+    console.log("Nice day.");
+  }
+}</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">switch Statement</td>
+                <td>The switch statement is used for multiple conditional branches, allowing the execution of different code blocks based on the value of an expression.</td>
+                <td><pre>let month = "December";
+switch (month) {
+    case "December":
+        console.log("Christmas month.");
+        break;
+    case "November":
+        console.log("Thanksgiving month");
+        break;
+    default:
+        console.log("Regular month.");
+}</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Ternary Operator</td>
+                <td>The ternary operator is the simplest way to write conditional statements such as if else condition.</td>
+                <td><pre>let age = 20;
+let canVote = age >= 18 ? "Yes" : "No";</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">for loop</td>
+                <td>A for loop is a control structure that allows to execute a block of code repeatedly for a specified number of times until a particular condition is met.</td>
+                <td><pre>for (let i = 1; i <= 5; i++) {
+    console.log(i);
+}</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">while loop</td>
+                <td>A while loop is a control structure that allows to execute a block of code repeatedly as long as a specified condition is true.</td>
+                <td><pre>let limit = 50, a = 0, b = 1;
+while (a <= limit) {
+    console.log(a);
+    let temp = a + b;
+    a = b;
+    b = temp;
+}</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">do while loop</td>
+                <td>A "do...while" loop allows you to execute a block of code repeatedly as long as a specified condition is true and guarantees that the code block will execute at least once.</td>
+                <td><pre>let roll = 1;
+do {
+    console.log("Rolled a " + roll);
+    roll++;
+} while (roll < 7);</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Function Declaration</td>
+                <td>Function is a reusable block of code that can be defined and executed as many times as needed.</td>
+                <td><pre>function sayHello() {
+  console.log("Hello!");
+}
+sayHello(); // function call</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Non-Parameterized Functions</td>
+                <td>The functions that do not require any parameters to operate.</td>
+                <td><pre>function greet() {
+  const greeting = "Hello, World!";
+  console.log(greeting);
+}
+greet();</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Parameterized Functions</td>
+                <td>The function that accepts one or more values that provide input data for the function to work with. These values are called parameters in declaration and arguments when calling.</td>
+                <td><pre>function add(a, b) {
+    return a + b;
+}
+console.log(add(3, 4)); // 7</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Named Function</td>
+                <td>The functions with a specific name that can be called by that name.</td>
+                <td><pre>const add = function(a, b) { 
+    console.log(a+b); 
+}
+add(2, 3); // 5</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">IIFE</td>
+                <td>Immediately Invoked Function Expression is a function in JavaScript that's defined and executed immediately after its creation.</td>
+                <td><pre>(function sayWelcome() {
+  console.log("Welcome!");
+})();</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Arrow Function</td>
+                <td>Arrow functions in JavaScript are a concise way to write function expressions, using the => syntax.</td>
+                <td><pre>const arrowFunc = (a, b) => a + b;
+console.log(arrowFunc(5, 3)); // 8</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">return</td>
+                <td>The return statement in JavaScript is used to end the execution of a function and specify the value that the function should return to the caller.</td>
+                <td><pre>function multiply(a, b) {
+    return a * b;
+}
+let result = multiply(3, 4); // 12</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Function Closure</td>
+                <td>A function closure in JavaScript allows a function to access and remember variables from its outer scope even after that scope has finished executing.</td>
+                <td><pre>function outerFunction() {
+  const outerVar = "I am outer";
+  function innerFunction() {
+    console.log(outerVar);
+  }
+  return innerFunction;
+}
+const closure = outerFunction();
+closure(); // "I am outer"</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Function Hoisting</td>
+                <td>Function hoisting means that function declarations are moved to the top of their containing scope during the compile phase, allowing them to be used before they are declared in the code.</td>
+                <td><pre>sayHello(); // Works!
+function sayHello() {
+  console.log("Hello!");
+}</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">Function Hoisting (Expression)</td>
+                <td>Function expressions where a function is assigned to a variable do not exhibit hoisting behaviour.</td>
+                <td><pre>greet(); // Error!
+const greet = function() {
+  console.log("Greetings!");
+};</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">addEventListener</td>
+                <td>addEventListener is a JavaScript method used to assign a function to execute when a specific event occurs on an element in the DOM.</td>
+                <td><pre>const button = 
+  document.getElementById('btn');
+button.addEventListener('click', () => {
+  console.log('Button clicked!');
+});</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">onclick Event</td>
+                <td>A way of assigning a function directly to an HTML element to execute when it's clicked.</td>
+                <td><pre>&lt;button onclick="myFunction()"&gt;
+  Click me
+&lt;/button&gt;
+&lt;script&gt;
+function myFunction() {
+  alert('Button clicked!');
+}
+&lt;/script&gt;</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">mouseover Event</td>
+                <td>The mouseover event is triggered when the mouse cursor enters an element.</td>
+                <td><pre>const myDiv = 
+  document.getElementById('myDiv');
+myDiv.addEventListener('mouseover', () => {
+  myDiv.style.backgroundColor = 
+    'lightgreen';
+});</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">mouseout Event</td>
+                <td>The mouseout event in JavaScript is triggered when the mouse pointer moves out of an element.</td>
+                <td><pre>const myDiv = 
+  document.getElementById('myDiv');
+myDiv.addEventListener('mouseout', () => {
+  myDiv.style.backgroundColor = 
+    'lightcoral';
+});</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">keydown Event</td>
+                <td>The keydown event is triggered when a key on the keyboard is pressed down.</td>
+                <td><pre>const input = 
+  document.getElementById("myInput");
+input.onkeydown = function(event) {
+  console.log('Key: ' + event.key);
+};</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">change Event</td>
+                <td>The change event is triggered when the value of an input element changes. Typically used for form elements like text fields or dropdowns.</td>
+                <td><pre>const input = 
+  document.getElementById("myInput");
+input.onchange = function() {
+  console.log('Value: ' + input.value);
+};</pre></td>
+            </tr>
+            
+            <tr>
+                <td class="term">onsubmit Event</td>
+                <td>The onsubmit event in HTML occurs when a form is submitted, either by clicking a submit button or by calling submit().</td>
+                <td><pre>&lt;form onsubmit="validateForm()"&gt;
+  &lt;input type="text" id="name"&gt;
+  &lt;input type="submit"&gt;
+&lt;/form&gt;
+&lt;script&gt;
+function validateForm() {
+  event.preventDefault();
+  // validation logic
+}
+&lt;/script&gt;</pre></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #666; border-top: 2px solid #ddd;">
+        <p><strong>JavaScript Development Cheatsheet</strong></p>
+        <p>A comprehensive reference guide for JavaScript fundamentals</p>
+    </footer>
+</body>
+</html>
